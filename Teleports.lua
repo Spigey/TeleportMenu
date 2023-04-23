@@ -86,16 +86,16 @@ fast:AddTextbox({
         Teleport(GameName, value)
     end
 })
-
-for key, value in pairs(fastpos[GameName]) do
-    fast:AddButton({
-        Name = key,
-        Callback = function()
-            Teleport(GameName, key)
-        end
-    })
+if not fastpos[GameName] == nil then
+    for key, value in pairs(fastpos[GameName]) do
+        fast:AddButton({
+            Name = key,
+            Callback = function()
+                Teleport(GameName, key)
+            end
+        })
+    end
 end
-
 
 function f3()
     local character = game:GetService("Players").LocalPlayer.Character
