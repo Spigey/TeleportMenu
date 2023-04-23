@@ -69,7 +69,7 @@ local fastpos = {
 local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 local opt = {}
 
-if not pos[GameName] == nil then
+if pos[GameName] ~= nil then
     for key, value in pairs(pos[GameName]) do
         table.insert(opt, key)
     end
@@ -84,7 +84,7 @@ function Teleport(Game, position)
     character:WaitForChild("HumanoidRootPart").CFrame = teleportCFrame
 end
 
-if not fastpos[GameName] == nil then
+if fastpos[GameName] ~= nil then
     fast:AddTextbox({
         Name = "Name TP",
         Default = " ",
@@ -122,7 +122,7 @@ end
 
 
 local tel = ""
-if not pos[GameName] == nil then
+if pos[GameName] ~= nil then
     tab:AddLabel("Teleport Names:")
     local Teleports = tab:AddDropdown({
     	Name = "Position",
