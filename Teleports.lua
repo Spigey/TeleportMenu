@@ -20,9 +20,8 @@ local PLACEHOLDER = TP:MakeTab({
 
 local pos = {
     ["Pop It Trading ✨"] = {
-        ["MainAccept"] = {213, 20, -241},
-        ["AltAccept"] = {229, 20, -207},
-        ["AltDecline"] = {213, 20, -208}
+        ["Secret Board"] = {141, 19, -41},
+        ["Group Board"] = {21, 19, -226}
     },
     ["🍕Work at a Pizza Place"] = {
         ["C1"] = {-197, 7, -444},
