@@ -41,6 +41,12 @@ local pos = {
     },
     ["The Chosen One"] = {
         ["Freefall"] = {0, 100, 0}
+    },
+    ["(UPD)🏆 Easy Stud Jumps Obby🏆"] = {
+        ["Stage 60"] = {199, 1267, -872},
+        ["End"] = {199, 1267, -989},
+        ["VIP Room"] = {200, -4, 250},
+        ["Spawn"] = {200, -4, 210}
     }
 }
 for key, value in pairs(pos) do
@@ -64,6 +70,10 @@ local fastpos = {
     },
     ["The Chosen One"] = {
         ["Freefall 500"] = {0, 500, 0}
+    },
+    ["(UPD)🏆 Easy Stud Jumps Obby🏆"] = {
+        ["Stage 60"] = {199, 1267, -872},
+        ["End"] = {199, 1267, -989}
     }
 }
 local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
