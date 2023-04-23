@@ -69,6 +69,7 @@ if not pos[GameName] == nil then
     end
 else
     warn("No positions found")
+    tab:AddLabel("No positions found!")
 end
 
 function Teleport(Game, position)
@@ -77,16 +78,16 @@ function Teleport(Game, position)
     character:WaitForChild("HumanoidRootPart").CFrame = teleportCFrame
 end
 
-
-fast:AddTextbox({
-    Name = "Name TP",
-    Default = " ",
-    TextDisappear = false,
-    Callback = function(value)
-        Teleport(GameName, value)
-    end
-})
 if not fastpos[GameName] == nil then
+    fast:AddTextbox({
+        Name = "Name TP",
+        Default = " ",
+        TextDisappear = false,
+        Callback = function(value)
+            Teleport(GameName, value)
+        end
+    })
+
     for key, value in pairs(fastpos[GameName]) do
         fast:AddButton({
             Name = key,
@@ -95,6 +96,8 @@ if not fastpos[GameName] == nil then
             end
         })
     end
+else
+    fast:AddLabel("No FastPositions Found!")
 end
 
 function f3()
@@ -113,23 +116,24 @@ end
 
 
 local tel = ""
-
-tab:AddLabel("Teleport Names:")
-local Teleports = tab:AddDropdown({
-	Name = "Position",
-	Default = "undefined",
-	Options = opt,
-	Callback = function(val)
-        tel = val
-        Teleport(GameName, tel)
-	end	  
-})
-tab:AddButton({
-    Name = "Teleport Again",
-    Callback = function()
-        Teleport(GameName, tel)
-    end
-})
+if not pos[GameName] == nil then
+    tab:AddLabel("Teleport Names:")
+    local Teleports = tab:AddDropdown({
+    	Name = "Position",
+	    Default = "undefined",
+	    Options = opt,
+	    Callback = function(val)
+            tel = val
+            Teleport(GameName, tel)
+	    end	  
+    })
+    tab:AddButton({
+        Name = "Teleport Again",
+        Callback = function()
+            Teleport(GameName, tel)
+        end
+    })
+end
 tab:AddButton({
     Name = "Print CFrame",
     Callback = function()
