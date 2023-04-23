@@ -83,6 +83,11 @@ function Teleport(Game, position)
     local teleportCFrame = CFrame.new(Vector3.new(pos[Game][position][1], pos[Game][position][2], pos[Game][position][3]))
     character:WaitForChild("HumanoidRootPart").CFrame = teleportCFrame
 end
+function FastTeleport(Game, position)
+    local character = game:GetService("Players").LocalPlayer.Character
+    local teleportCFrame = CFrame.new(Vector3.new(fastpos[Game][position][1], fastpos[Game][position][2], fastpos[Game][position][3]))
+    character:WaitForChild("HumanoidRootPart").CFrame = teleportCFrame
+end
 
 if fastpos[GameName] ~= nil then
     fast:AddTextbox({
