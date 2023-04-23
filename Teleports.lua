@@ -95,7 +95,7 @@ if fastpos[GameName] ~= nil then
         Default = " ",
         TextDisappear = false,
         Callback = function(value)
-            Teleport(GameName, value)
+            FastTeleport(GameName, value)
         end
     })
 
