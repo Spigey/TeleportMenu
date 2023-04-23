@@ -38,6 +38,9 @@ local pos = {
         ["A2"] = {199, 7, -624},
         ["A3"] = {204, 7, -824},
         ["Pizzeria"] = {65, 4, -17}
+    },
+    ["The Chosen One"] = {
+        ["Freefall"] = {0, 100, 0}
     }
 }
 for key, value in pairs(pos) do
@@ -58,6 +61,9 @@ end
 local fastpos = {
     ["🍕Work at a Pizza Place"] = {
         ["Pizzeria"] = {65, 4, -17}
+    },
+    ["The Chosen One"] = {
+        ["Freefall 500"] = {0, 500, 0}
     }
 }
 local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
