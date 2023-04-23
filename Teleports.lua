@@ -95,7 +95,7 @@ if fastpos[GameName] ~= nil then
         Default = " ",
         TextDisappear = false,
         Callback = function(value)
-            FastTeleport(GameName, value)
+            Teleport(GameName, value)
         end
     })
 
@@ -103,7 +103,7 @@ if fastpos[GameName] ~= nil then
         fast:AddButton({
             Name = key,
             Callback = function()
-                Teleport(GameName, key)
+                FastTeleport(GameName, key)
             end
         })
     end
