@@ -47,6 +47,14 @@ local pos = {
         ["End"] = {199, 1267, -989},
         ["VIP Room"] = {200, -4, 250},
         ["Spawn"] = {200, -4, 210}
+    },
+    ["Standard roblox obby, but it's realistic"] = {
+        ["End"] = {38, 17, 48}
+    },
+    ["Cook Burgers"] = {
+        ["Kitchen"] = {-1, 86, -363},
+        ["Lab"] = {-55, 66, -845},
+        ["Secret Room"] = {127, 86, -122}
     }
 }
 for key, value in pairs(pos) do
