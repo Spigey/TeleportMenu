@@ -12,6 +12,11 @@ local fast = TP:MakeTab({
     Icon = " ",
     PremiumOnly = false
 })
+local GameTP = TP:MakeTab({
+    Name = "Game Switcher",
+    Icon = " ",
+    PremiumOnly = false
+})
 local PLACEHOLDER = TP:MakeTab({
     Name = "---------------",
     Icon = " ",
@@ -20,11 +25,13 @@ local PLACEHOLDER = TP:MakeTab({
 
 local pos = {
     ["Pop It Trading ✨"] = {
+        ["ID"] = 7346416636,
         ["Secret Board"] = {141, 19, -41},
         ["Group Board"] = {21, 19, -226},
         ["Spawn"] = {61, 19, -266}
     },
     ["🍕Work at a Pizza Place"] = {
+        ["ID"] = 192800,
         ["C1"] = {-197, 7, -444},
         ["C2"] = {-197, 7, -624},
         ["C3"] = {-200, 7, -800},
@@ -40,18 +47,22 @@ local pos = {
         ["Pizzeria"] = {65, 4, -17}
     },
     ["The Chosen One"] = {
+        ["ID"] = 11137575513,
         ["Freefall"] = {0, 100, 0}
     },
     ["(UPD)🏆 Easy Stud Jumps Obby🏆"] = {
+        ["ID"] = 11166344460,
         ["Stage 60"] = {199, 1267, -872},
         ["End"] = {199, 1267, -989},
         ["VIP Room"] = {200, -4, 250},
         ["Spawn"] = {200, -4, 210}
     },
     ["Standard roblox obby, but it's realistic"] = {
+        ["ID"] = 11302741543,
         ["End"] = {38, 17, 48}
     },
     ["Cook Burgers"] = {
+        ["ID"] = 2971329387,
         ["Kitchen"] = {-1, 86, -363},
         ["Lab"] = {-55, 66, -845},
         ["Secret Room"] = {127, 86, -122}
@@ -64,12 +75,14 @@ for key, value in pairs(pos) do
         PremiumOnly = false
     })
     for keyV, valueV in pairs(pos[key]) do
-        RANDOMTABMAN:AddButton({
-            Name = keyV,
-            Callback = function()
-                Teleport(key, keyV)
-            end
-        })
+        if value ~= "ID" then
+            RANDOMTABMAN:AddButton({
+                Name = keyV,
+                Callback = function()
+                    Teleport(key, keyV)
+                end
+            })
+        end
     end
 end
 local fastpos = {
@@ -84,6 +97,91 @@ local fastpos = {
         ["End"] = {199, 1267, -989}
     }
 }
+function SwitchGamesGUI(GAME)
+    local gui = Instance.new("ScreenGui")
+gui.Name = "ExampleGui"
+gui.Parent = game.Players.LocalPlayer.PlayerGui
+
+local frame = Instance.new("Frame")
+frame.Name = "ExampleFrame"
+frame.Parent = gui
+frame.BackgroundColor3 = Color3.fromRGB(27, 42, 53)
+frame.BackgroundTransparency = 0.100
+frame.BorderColor3 = Color3.fromRGB(6, 6, 6)
+frame.BorderSizePixel = 3
+frame.LayoutOrder = -4
+frame.Position = UDim2.new(0.410509884, 0, 0.44148019, 0)
+frame.Size = UDim2.new(0, 410, 0, 136)
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Name = "ExampleLabel"
+textLabel.Parent = gui
+textLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1.000
+textLabel.Position = UDim2.new(0.430801243, 20, 0.441480219, 0)
+textLabel.Size = UDim2.new(0, 266, 0, 74)
+textLabel.ZIndex = 5
+textLabel.Font = Enum.Font.SourceSans
+textLabel.Text = "Are you sure you want to switch Games?"
+textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.TextSize = 25.000
+
+local yesButton = Instance.new("TextButton")
+yesButton.Name = "YesButton"
+yesButton.Parent = gui
+yesButton.BackgroundColor3 = Color3.fromRGB(40, 63, 79)
+yesButton.BackgroundTransparency = 0.250
+yesButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+yesButton.Position = UDim2.new(0.421956301, 0, 0.50516355, 0)
+yesButton.Size = UDim2.new(0, 145, 0, 32)
+yesButton.ZIndex = 5
+yesButton.Font = Enum.Font.SourceSans
+yesButton.Text = "Yes"
+yesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+yesButton.TextSize = 19.000
+
+local noButton = Instance.new("TextButton")
+noButton.Name = "NoButton"
+noButton.Parent = gui
+noButton.BackgroundColor3 = Color3.fromRGB(40, 63, 79)
+noButton.BackgroundTransparency = 0.250
+noButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+noButton.Position = UDim2.new(0.504162312, 0, 0.50516355, 0)
+noButton.Size = UDim2.new(0, 145, 0, 32)
+noButton.ZIndex = 5
+noButton.Font = Enum.Font.SourceSans
+noButton.Text = "No"
+noButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+noButton.TextSize = 19.000
+
+local function onYesButtonClicked()
+    gui:Destroy()
+    local gameId = pos[GAME]["ID"]
+    function ServerHop(ID)
+        local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
+        module:Teleport(ID)
+    end
+    ServerHop(gameId)
+end
+
+local function onNoButtonClicked()
+    gui:Destroy()
+end
+
+yesButton.MouseButton1Click:Connect(onYesButtonClicked)
+noButton.MouseButton1Click:Connect(onNoButtonClicked)
+end
+
+for key, value in pairs(pos) do 
+    GameTP:AddButton({
+        Name = key,
+        Callback = function()
+            SwitchGamesGUI(key)
+        end
+    })
+end
+
+
 local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 local opt = {}
 
