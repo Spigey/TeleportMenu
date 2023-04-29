@@ -187,7 +187,9 @@ local opt = {}
 
 if pos[GameName] ~= nil then
     for key, value in pairs(pos[GameName]) do
-        table.insert(opt, key)
+        if key ~= "ID" then
+            table.insert(opt, key)
+        end
     end
 else
     warn("No positions found")
