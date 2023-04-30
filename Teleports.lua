@@ -18,9 +18,48 @@ local GameTP = TP:MakeTab({
     PremiumOnly = false
 })
 local PLACEHOLDER = TP:MakeTab({
-    Name = "---------------",
+    Name = "------------------",
     Icon = " ",
     PremiumOnly = true
+})
+PLACEHOLDER:AddButton({
+    Name = "DON'T CLICK ME",
+    Callback = function()
+        local gui = Instance.new("ScreenGui")
+        gui.Name = "ExampleGui"
+        gui.Parent = game.Players.LocalPlayer.PlayerGui
+
+        local frame = Instance.new("Frame")
+        frame.Name = "ExampleFrame"
+        frame.Parent = gui
+        frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        frame.BackgroundTransparency = 0
+        frame.BorderColor3 = Color3.fromRGB(6, 6, 6)
+        frame.BorderSizePixel = 3
+        frame.LayoutOrder = 40
+        frame.Position = UDim2.new(-100, -100, -100, -100)
+        frame.Size = UDim2.new(1000, 1000, 1000, 1000)
+
+        local yesButton = Instance.new("TextButton")
+        yesButton.Name = "YesButton"
+        yesButton.Parent = gui
+        yesButton.BackgroundColor3 = Color3.fromRGB(40, 63, 79)
+        yesButton.BackgroundTransparency = 1
+        yesButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        yesButton.Position = UDim2.new(0, 0, 0, 0)
+        yesButton.Size = UDim2.new(0, 145, 0, 32)
+        yesButton.ZIndex = 41
+        yesButton.Font = Enum.Font.SourceSans
+        yesButton.Text = "You're blind now"
+        yesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        yesButton.TextSize = 40.000
+
+        local function onYesButtonClicked()
+            gui:Destroy()
+        end
+        
+        yesButton.MouseButton1Click:Connect(onYesButtonClicked)
+    end
 })
 
 local pos = {
@@ -74,8 +113,9 @@ for key, value in pairs(pos) do
         Icon = " ",
         PremiumOnly = false
     })
+    RANDOMTABMAN:AddLabel(key)
     for keyV, valueV in pairs(pos[key]) do
-        if value ~= "ID" then
+        if keyV ~= "ID" then
             RANDOMTABMAN:AddButton({
                 Name = keyV,
                 Callback = function()
@@ -263,9 +303,14 @@ if pos[GameName] ~= nil then
         end
     })
 end
+local POSPOS = tab:AddLabel(tostring(f3()))
+
 tab:AddButton({
-    Name = "Print CFrame",
+    Name = "Copy CFrame",
     Callback = function()
-        print(f3())
+        setclipboard(tostring(f3()))
     end
 })
+while wait(0.3) do
+    POSPOS:Set(tostring(f3()))
+end
