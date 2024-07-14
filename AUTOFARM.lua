@@ -1,10 +1,11 @@
+print("Loaded Autofarm script")
+
 function press()
-    local finish = game.Workspace.RebirthButtons.Medieval.ProximityPrompt
-    fireproximityprompt(finish)
+    fireproximityprompt(game.Workspace.Worlds.Space.Model.Space.ProximityPrompt, 2)
 end
 local tp = {
-    ["Stage 60"] = {-11126, 2064, -337},
-    ["End"] = {-11126, 2064, -367},
+    ["Stage 60"] = {326, 3284, 40216},
+    ["End"] = {325, 3284, 40186},
 }
 function Teleport(position)
     local character = game:GetService("Players").LocalPlayer.Character
@@ -32,6 +33,7 @@ tab:AddButton({
         enabled = false
     end
 })
+tab:AddLabel("There is a 20-second win cooldown.")
 while wait(0.3) do
     if enabled then
         Teleport("Stage 60")
@@ -39,5 +41,6 @@ while wait(0.3) do
         Teleport("End")
         wait(0.3)
         press()
+        wait(18)
     end
 end
